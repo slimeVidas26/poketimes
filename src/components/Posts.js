@@ -5,7 +5,7 @@ export default class Posts extends Component {
    state = {
        posts:[ ]
    }
-
+ 
    componentDidMount(){
     //    axios.get('https://jsonplaceholder.typicode.com/posts')
     //    .then(res => {
@@ -33,18 +33,21 @@ export default class Posts extends Component {
   render() {
       const { posts} = this.state;
       console.log(posts)
-      const postsList = posts.lenght ? (
+      const postsList = !posts.lenght ? (
           posts.map(post=>{
            return(
                <div className = "post card" key={post.id}>
                    <div className="card-content">
                        <span className="card-title">{post.title}</span>
                        <p>{post.body}</p>
+                       
                    </div>
                </div>
            )
-       })):(
-       <div className = "center">No posts here !</div>);
+       })
+       ):(
+       <div className = "center">No posts here !</div>
+       )
       return (
       <div className = "container">
           <h4 className="center">Posts</h4>
