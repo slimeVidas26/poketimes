@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+//import axios from 'axios'
 import {Link} from 'react-router-dom'
 import pokeball from "../pokeball.png"
+import {connect} from 'react-redux'
 
-export default class Posts extends Component {
-   state = {
-       posts:[ ]
-   }
+ class Posts extends Component {
+  //  state = {
+  //      posts:[ ]
+  //  }
  
-   componentDidMount(){
+   //componentDidMount(){
     //    axios.get('https://jsonplaceholder.typicode.com/posts')
     //    .then(res => {
     //        this.setState({
@@ -19,21 +20,22 @@ export default class Posts extends Component {
     //     console.log(error);
     //   })
 
-   axios.get('https://jsonplaceholder.typicode.com/posts')
-  .then((res)=> {
-    // handle success
-    this.setState({posts:res.data.slice(0,10)})
-    console.log(res);
-  })
-  .catch(function (error) {
-    // handle error
-    console.log(error);
-  });
+  //  axios.get('https://jsonplaceholder.typicode.com/posts')
+  // .then((res)=> {
+  //   // handle success
+  //   this.setState({posts:res.data.slice(0,10)})
+  //   console.log(res);
+  // })
+  // .catch(function (error) {
+  //   // handle error
+  //   console.log(error);
+  // });
 
-    }
+    //}
 
   render() {
-      const { posts} = this.state;
+    console.log(this.props)
+      const { posts} = this.props;
       console.log(posts)
       const postsList = !posts.lenght ? (
           posts.map(post=>{
@@ -62,3 +64,14 @@ export default class Posts extends Component {
     )
   }
 }
+
+const  mapStateToProps = (state)=>{
+   return {
+     posts:state.posts
+   }
+
+}
+
+// function connect(mapStateToProps, mapDispatchToProps, mergeProps, options)
+
+export default connect(mapStateToProps)(Posts);
