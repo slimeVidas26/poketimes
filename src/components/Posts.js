@@ -5,39 +5,13 @@ import pokeball from "../pokeball.png"
 import {connect} from 'react-redux'
 
  class Posts extends Component {
-  //  state = {
-  //      posts:[ ]
-  //  }
- 
-   //componentDidMount(){
-    //    axios.get('https://jsonplaceholder.typicode.com/posts')
-    //    .then(res => {
-    //        this.setState({
-    //            posts:res.data.slice(0,10)
-    //        })
-    //    }).catch(function (error) {
-    //     // handle error
-    //     console.log(error);
-    //   })
-
-  //  axios.get('https://jsonplaceholder.typicode.com/posts')
-  // .then((res)=> {
-  //   // handle success
-  //   this.setState({posts:res.data.slice(0,10)})
-  //   console.log(res);
-  // })
-  // .catch(function (error) {
-  //   // handle error
-  //   console.log(error);
-  // });
-
-    //}
+  
 
   render() {
     console.log(this.props)
       const { posts} = this.props;
       console.log(posts)
-      const postsList = !posts.lenght ? (
+      const postsList = posts.length ? (
           posts.map(post=>{
            return(
                <div className = "post card" key={post.id}>
